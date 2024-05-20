@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf8"/>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <title>
+      
+        AULDUNS.SITE
+      
+    </title>
+    <meta name="description" content="生命是一场盛大的腐烂"/>
+    <meta name="keywords" content=""/>
+    
+      <link rel="apple-touch-icon"
+            sizes="180x180"
+            href="/images/apple-touch-icon.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/images/favicon-32x32.png"/>
+    
+    
+      <link rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/images/favicon-16x16.png"/>
+    
+    
+      <link rel="mask-icon"
+            href="/images/logo.svg"
+            color=""/>
+    
+    
+    
+      
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/regular.ttf);
+        font-weight: regular;
+    }
+  </style>
+
+  <style>
+    @font-face {
+        font-family:sourceHanSerif;
+        src: url(/font/bold.ttf);
+        font-weight: bold;
+    }
+  </style>
+
+
+    
+    <link rel="stylesheet"
+          type="text/css"
+          href='/css/layout.css'/>
+    
+    
+  
+  <link rel="stylesheet"
+        type="text/css"
+        href='/css/index.css'/>
+
+  <meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div class="head">
+      <div class="nav">
+        <a href='/' class="nav-logo">
+          <img alt="logo" height="60px" width="60px" src="/images/logo.svg"/>
+        </a>
+        <input id="navBtn" type="checkbox"/>
+        <div class="nav-menu">
+          
+            
+              <a class="nav-menu-item" href="/developer">开发者</a>
+            
+              <a class="nav-menu-item" href="/life">生活</a>
+            
+          
+          
+        </div>
+        <label class="nav-btn" for="navBtn"></label>
+      </div>
+    </div>
+    <div class="body">
+      
+  <div class="wall wall-index">
+    <div class="wall-main" id="wall-main">
+      <div class="wall-title">AULDUNS.SITE</div>
+      <div class="wall-subtitle">Aulduns的博客</div>
+      <div class="wall-description">“生命是一场盛大的绽放”</div>
+    </div>
+    <div class="wall-bg">
+      <div class="wall-bg-index">
+        <div class="hello-world">
+          <div> Just do it</div>
+          <div class="cursor"></div>
+        </div>
+       
+        <canvas id="mycanvas"></canvas>
+        <div class="motto"></div>
+        <div class="poem">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <div class="about-photo"
+         style="background-image: url(/images/about.png)"></div>
+    <div class="about-text">
+      <div class="about-title">
+        
+          <div class="matts">我</div>
+        
+      </div>
+      <div class="about-detail">
+        <div class="about-text-p">
+          
+            
+              人类的八十亿分之一，宇宙的尘埃
+              <br/>
+            
+          
+        </div>
+      </div>
+    </div>
+  </div>
+   <audio
+      id="music"
+      class="audio"
+      controls
+      autoplay="autoplay"
+      loop="loop"
+      height="100"
+      width="100"
+    >
+      <source src="/video/background.mp3" type="audio/mpeg" />
+    </audio>
+  
+    <div class="timeline">
+      <div class="timeline-head">
+        <div class="title">时间线</div>
+        <div class="radio-wrapper">
+          
+            <div class="radio">
+              <input id="radio-article"
+                     type="checkbox"
+                     checked/>
+              <label class="radio-skin--article" for="radio-article"></label>
+            </div>
+          
+            <div class="radio">
+              <input id="radio-essay"
+                     type="checkbox"
+                     checked/>
+              <label class="radio-skin--essay" for="radio-essay"></label>
+            </div>
+          
+        </div>
+      </div>
+      <div class="timeline-body">
+        <div class="timeline-item-first">
+          <div class="line-anchor line-anchor--now"></div>
+        </div>
+        <div class="timeline-list" id="timeline-list"></div>
+        <div class="timeline-item-last">
+          <div class="line-anchor line-anchor--end"></div>
+        </div>
+      </div>
+    </div>
+  
+
+    </div>
+    <div class="foot">
+      <div class="foot-inner">
+        
+        <div class="foot__body">
+          
+          
+            <div class="foot-item">
+              <div class="foot-item__body">
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-github.svg"/>
+                    <a class="foot-link" target="_blank" rel="noopener" href="https://github.com/Sunpinex">github：sunpinex</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-wx.svg"/>
+                    <a class="foot-link" href="">微信号：Fchwpo02</a>
+                  </div>
+                
+                  <div class="text">
+                    <img alt="link" height="20px" width="20px" src="/images/logo-mail.svg"/>
+                    <a class="foot-link" href="">auldunsyoung@gmail.com</a>
+                  </div>
+                
+              </div>
+            </div>
+          
+         
+        </div>
+        <div class="copyright">
+          <div>Copyright © Aulduns 2023</div>
+        </div>
+      </div>
+    </div>
+    
+    
+  <script type="text/javascript">
+ let canvas = document.getElementById('mycanvas');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// 创建绘制上下文
+let ctx = canvas.getContext('2d');
+
+let mouse = {
+    x: canvas.width / 2,
+    y: canvas.height / 2
+}
+
+window.addEventListener('mousemove', function (event) {
+    mouse.x = event.clientX;
+    mouse.y = event.clientY;
+});
+
+window.addEventListener('resize', function (event) {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    init();
+});
+
+let maxRadius = 40;
+
+let colorArray = [
+    '#4CBF88',
+    '#F2B134',
+    '#6F4A70',
+    '#FF6275',
+    '#00B5C4'
+]
+
+function Ball(x, y, dx, dy, radius, color) {
+    this.x = x;
+    this.y = y;
+    this.dx = dx;
+    this.dy = dy;
+    this.radius = radius;
+    this.minRadius = radius;
+    this.color = color;
+
+    this.draw = function () {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    this.update = function () {
+        if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
+            this.dx = -this.dx;
+        }
+
+        if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
+            this.dy = -this.dy;
+        }
+
+        this.x += this.dx;
+        this.y += this.dy;
+
+        // 鼠标交互
+        if (mouse.x - this.x < 50 && mouse.x - this.x > -50 &&
+            mouse.y - this.y < 50 && mouse.y - this.y > -50) {
+            if (this.radius < maxRadius) {
+                this.radius += 1;
+            }
+        } else if (this.radius > this.minRadius) {
+            this.radius -= 1;
+        }
+
+        this.draw();
+    }
+}
+
+let ballArray;
+
+function init() {
+    ballArray = [];
+    for (let i = 0; i < 200; i++) {
+        let radius = Math.random() * 4 + 1;
+        let x = Math.random() * (canvas.width - 2 * radius) + radius;
+        let y = Math.random() * (canvas.height - 2 * radius) + radius;
+        let dx = (Math.random() - 0.5) * 2;
+        let dy = (Math.random() - 0.5) * 2;
+        let color = colorArray[Math.floor(Math.random() * 5)];
+        ballArray.push(new Ball(x, y, dx, dy, radius, color));
+    }
+}
+
+// 动画
+function animate() {
+    requestAnimationFrame(animate);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let b of ballArray) {
+        b.update();
+    }
+}
+
+init();
+animate();
+
+function toggleSound() {
+    var music = document.getElementById("music");//获取ID  
+    if (music.paused) { //判读是否播放  
+        music.paused=false;
+        music.play(); //没有就播放 
+    }    
+}
+</script>
+  
+  
+  <script type="text/javascript">
+    const timelineData = {"types":["article","essay"],"posts":[{"title":"保姆级解刨 Vue 响应式原理（一）","path":"/2023/11/18/%E8%A7%A3%E5%88%A8Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E5%8E%9F%E7%90%86(%E4%B8%80)/","icon":"/images/icon/icon-article.svg","type":"article","date":"2023-11-18"},{"title":"Promise常用用法","path":"/2023/10/28/Promise%E5%B8%B8%E7%94%A8%E7%94%A8%E6%B3%95/","icon":"/images/icon/icon-article.svg","type":"article","date":"2023-10-28"},{"title":"vue-admin学习笔记","path":"/2023/09/09/vue-admin%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","icon":"/images/icon/icon-article.svg","type":"article","date":"2023-09-09"},{"title":"谨此此片献给勇敢又无畏的20岁","path":"/2023/02/05/%E8%B0%A8%E6%AD%A4%E6%AD%A4%E7%89%87%E7%8C%AE%E7%BB%99%E5%8B%87%E6%95%A2%E5%8F%88%E6%97%A0%E7%95%8F%E7%9A%8420%E5%B2%81/","icon":"/images/icon/icon-essay.svg","type":"essay","date":"2023-02-05"}]}
+    const {types, posts} = timelineData
+    listEl = document.querySelector("#timeline-list");
+
+    elRefs = getElRefs(types)
+    bindListener(types, elRefs)
+
+    setTimeout(init.bind(this, types, elRefs))
+
+    function getElRefs(types) {
+      return types.map(type => document.querySelector(`#radio-${type}`))
+    }
+
+    function bindListener(names, els) {
+      names.map((name, i) => els[i].addEventListener('change', e => updateList(name, e.target.checked)))
+    }
+
+    function updateList(type, value) {
+      listDom
+        .filter(line => line.type === type)
+        .forEach(line => {
+          line.el.className = line
+            .el
+            .className
+            .replace(
+              /(--hidden)?$/, value
+              ? ""
+              : "--hidden");
+        });
+    }
+
+    const listDom = posts.map(t => getLine(t));
+    listEl.append(...listDom.map(i => i.el));
+
+    function getLine(data) {
+      const item = document.createElement("DIV");
+      item.className = `timeline-item-${data.type} timeline-item--hidden`;
+      item.innerHTML = `
+                          <div class="line-date">
+                          <div class="line-date-tag">${data.date}</div></div>
+                          <div class="line-anchor"></div>
+                          <div class="line-title">
+                              <img class="text-icon" src="${data.icon}"/><a class="timeline-post" href="${data.path}">${data.title}</a>
+                          </div>
+                          `;
+      return {el: item, type: data.type};
+    };
+
+    function init(names, els) {
+      names.map((name, i) => updateList(name, els[i].checked))
+    }
+  </script >
+
+  
+
+  </body>
+</html>
